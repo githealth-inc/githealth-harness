@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GitHealth Authority Decision v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision_id",
+    "proposal_id",
+    "policy_version",
+    "decision",
+    "reason_codes",
+    "decided_at"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string"
+    },
+    "proposal_id": {
+      "type": "string"
+    },
+    "policy_version": {
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "allow",
+        "deny",
+        "needs_human_approval"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actor_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approver_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approval_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
