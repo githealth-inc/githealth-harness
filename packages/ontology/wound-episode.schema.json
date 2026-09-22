@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Synthetic Wound Episode v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "episode_id",
+    "patient_ref",
+    "wound",
+    "evidence_refs"
+  ],
+  "properties": {
+    "episode_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patient_ref": {
+      "type": "string",
+      "description": "Synthetic pseudonymous reference; no real PHI"
+    },
+    "wound": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "site",
+        "etiology",
+        "length_cm",
+        "width_cm"
+      ],
+      "properties": {
+        "site": {
+          "type": "string"
+        },
+        "etiology": {
+          "enum": [
+            "pressure",
+            "venous",
+            "arterial",
+            "diabetic",
+            "surgical",
+            "unknown"
+          ]
+        },
+        "length_cm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "width_cm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "depth_cm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "encounter_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
