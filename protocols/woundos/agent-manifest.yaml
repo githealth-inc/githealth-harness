@@ -1,0 +1,22 @@
+agent_id: woundos-synthetic-assessment-agent
+version: 0.1.0
+purpose: propose_wound_episode_assessment
+data_policy: synthetic_only
+inputs:
+  - wound_measurements
+  - synthetic_patient_context
+  - evidence_references
+ontology: packages/ontology/wound-episode.schema.json
+protocols:
+  - wound-assessment-v0.1
+authority:
+  may_recommend: true
+  may_authorize_treatment: false
+  requires_human_review_for:
+    - treatment_plan
+    - medication_change
+    - invasive_procedure
+provenance:
+  required: true
+economics:
+  metering: true
